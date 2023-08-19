@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/images/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Card</title>
+  </head>
+  <body>
+    <div id="root">
+      <div
+        class="bg-[url('/images/bg-main-mobile.png')] h-[35%] bg-no-repeat bg-center bg-cover xl:h-full xl:w-[40%] absolute inset-0 z-[-5]"
+      ></div>
+
+      <div
+        class="container h-full grid grid-rows-page-layout xl:grid-cols-page-layout xl:grid-rows-1"
+      >
+        <div
+          class="p-4 min-h-[400px] flex flex-col items-center justify-between xl:justify-center gap-4 xl:gap-8"
+        >
+          <div
+            class="relative max-w-md aspect-[447/245] translate-y-[45%] xl:translate-y-0 self-end xl:self-start xl:order-2 w-full rounded-lg overflow-hidden bg-[url('/images/bg-card-back.png')] bg-no-repeat bg-center bg-full"
+          >
+            <div
+              class="absolute top-[49.5%] right-[10%] xl:right-[10%] -translate-y-1/2 -translate-x-1/2"
+              id="card-cvc"
+            >
+              <p
+                class="tracking-widest text-neutral-200 text-xs xl:text-xl appear"
+              >
+                000
+              </p>
+            </div>
+          </div>
+          <div
+            class="p-4 flex flex-col items-start justify-between gap-4 max-w-md aspect-[447/245] z-10 self-start xl:self-end xl:order-1 w-full rounded-lg overflow-hidden bg-[url('/images/bg-card-front.png')] bg-no-repeat bg-center bg-full"
+          >
+            <div class="w-[50px] xl:w-auto">
+              <img src="/images/card-logo.svg" alt="" />
+            </div>
+            <div
+              class="flex flex-col gap-4 xl:gap-8 items-start w-full mb-4 md:px-4"
+            >
+              <div class="w-full">
+                <p
+                  id="card-number"
+                  class="tracking-widest text-white font-bold w-full text-md md:text-2xl appear overflow-hidden"
+                >
+                  0000 0000 0000 0000
+                </p>
+              </div>
+              <div class="flex items-center justify-between w-full gap-4">
+                <div id="card-name">
+                  <h3 class="text-white text-md uppercase md:text-lg appear">
+                    CARDHOLDER
+                  </h3>
+                </div>
+                <p class="text-white">
+                  <span id="card-month" class="text-sm md:text-md"
+                    ><span class="appear">00</span></span
+                  >
+                  <span class="text-sm md:text-md">/</span>
+                  <span id="card-year" class="text-sm md:text-md"
+                    ><span class="appear">00</span></span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-auto">
+          <div
+            id="complete"
+            class="hidden appear px-4 py-8 justify-items-center gap-y-4 max-w-lg mx-auto"
+          >
+            <div>
+              <img src="/images/icon-complete.svg" alt="" />
+            </div>
+            <p class="text-violet-300 font-semibold text-lg tracking-widest">THANK YOU!</p>
+            <p  class="text-violet-200 font-semibold text-sm">We've added your card details</p>
+            <button
+              id="continue-btn"
+              type="submit"
+              class="text-white w-full bg-violet-300 py-4 rounded-md"
+            >
+              Contine
+            </button>
+          </div>
+          <form
+            id="card-form"
+            class="appear px-4 py-8 grid gap-y-4 max-w-lg mx-auto"
+          >
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="name"
+                class="text-gray-900 font-mono font-bold text-md"
+                >CARDHOLDER NAME</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="ring-1 ring-gray-300 rounded-md p-2 placeholder:text-gray-400 active:ring-gradiant-to focus-within:ring-gradiant-to"
+                placeholder="e.g. Mahmoud Bassiony"
+              />
+            </div>
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="number"
+                class="text-gray-900 font-mono font-bold text-md"
+                >CARD NUMBER</label
+              >
+              <input
+                type="number"
+                id="number"
+                max="10"
+                maxlength="16"
+                name="number"
+                class="ring-1 ring-gray-300 rounded-md p-2 placeholder:text-gray-400 active:ring-gradiant-to focus-within:ring-gradiant-to arrow-hide appearance-none"
+                placeholder="e.g. 1234 5678 9123 0000"
+              />
+            </div>
+            <div class="flex justify-between gap-4 flex-wrap">
+              <div class="flex flex-col gap-2">
+                <label
+                  for="date"
+                  class="text-gray-900 font-mono font-bold text-md"
+                  >EXP. DATE (MM/YY)</label
+                >
+                <div class="flex gap-2 flex-wrap">
+                  <input
+                    type="number"
+                    id="input-month"
+                    max="12"
+                    maxlength="2"
+                    class="ring-1 max-w-[100px] ring-gray-300 rounded-md p-2 placeholder:text-gray-400 active:ring-gradiant-to focus-within:ring-gradiant-to arrow-hide appearance-none"
+                    placeholder="MM"
+                  />
+                  <input
+                    type="number"
+                    id="input-year"
+                    max="99"
+                    maxlength="2"
+                    class="ring-1 max-w-[100px] ring-gray-300 rounded-md p-2 placeholder:text-gray-400 active:ring-gradiant-to focus-within:ring-gradiant-to arrow-hide appearance-none"
+                    placeholder="YY"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 flex-1">
+                <label
+                  for="cvc-number"
+                  class="text-gray-900 font-mono font-bold text-md"
+                  >CVC</label
+                >
+                <input
+                  type="number"
+                  id="cvc-number"
+                  max="999"
+                  maxlength="3"
+                  class="ring-1 ring-gray-300 rounded-md p-2 placeholder:text-gray-400 active:ring-gradiant-to focus-within:ring-gradiant-to arrow-hide appearance-none"
+                  placeholder="e.g. 123"
+                />
+              </div>
+            </div>
+
+            <button
+              id="submit-btn"
+              type="button"
+              class="text-white w-full bg-violet-300 py-4 rounded-md"
+            >
+              Confirm
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
